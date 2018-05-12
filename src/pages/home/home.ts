@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import { GithubProvider } from "../../providers/github.provider";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: "page-home",
@@ -11,7 +12,7 @@ export class HomePage {
 
   repoName: string = "";
 
-  constructor(public navCtrl: NavController, private github: GithubProvider) {}
+  constructor(public navCtrl: NavController,private browser: InAppBrowser, private github: GithubProvider) {}
 
   search(ev: any) {
     let val = ev.target.value;
@@ -23,8 +24,12 @@ export class HomePage {
     });
   }  
 
-  clear() {
+  clear() {  
     this.repoList = [];
+  }
+
+  openUrl(url:string){
+    this.browser.create(url,"","fullscreen=no");
   }
 
   ionViewDidLoad() {}
