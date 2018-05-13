@@ -29,8 +29,8 @@ export class HomePage {
   }
 
   openUrl(url:string){
-    this.browser.create(url,"","fullscreen=no");
+    this.browser.create(url,'','fullscreen=no');
   }
-
+ 
   ionViewDidLoad() {}
 }
